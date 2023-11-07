@@ -172,8 +172,9 @@ def extract_pred_answer(dataset_name, pred_completion, rounding="int", abs_val=T
 		return INVALID_ANS
 
 	if dataset_name in ["GSM8K", "SVAMP", "MultiArith"]:
+		pred_answer = INVALID_ANS
 		# GSM8K, SVAMP, and MultiArith all have a single-value integer answer
-		if type(pred_completion) == int:
+		if type(pred_completion) in [int, float]:
 			pred_answer = pred_completion
 		elif type(pred_completion) == str:
 			ANS_RE = re.compile(r"(\-?[0-9\.\,]+)")
@@ -187,6 +188,8 @@ def extract_pred_answer(dataset_name, pred_completion, rounding="int", abs_val=T
 					pred_answer = INVALID_ANS
 			else:
 				pred_answer = INVALID_ANS
+		else:
+			pred_answer = INVALID_ANS
 		return pred_answer
 
 	elif dataset_name in ["ASDiv"]:

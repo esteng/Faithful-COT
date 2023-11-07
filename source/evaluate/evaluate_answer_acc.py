@@ -113,7 +113,7 @@ def evaluate_acc(dataset, predictions, dataset_name, non_empty_only=False, valid
 if __name__ == "__main__":
 	Parser = argparse.ArgumentParser()
 	Parser.add_argument("--dataset_name", help="The name of the dataset.", choices=["GSM8K", "ASDiv", "MultiArith", "SVAMP", "AQUA", "date", "StrategyQA", "sports", "saycan", "CLUTRR"])
-	Parser.add_argument("--split", help="The split of the dataset.", choices=["train", "dev", "test"])
+	Parser.add_argument("--split", help="The split of the dataset.", choices=["train", "dev", "test", "mydev", "mytest"])
 	Parser.add_argument("--model_name", help="The name of the model (should have a corresponding config file under `configuration/config_files/dataset_name` called `{model_name}.json`.)")
 	Parser.add_argument("--non_empty_only", help="If true, only evaluate on non-empty answers.", action="store_true")
 	Parser.add_argument("--valid_only", help="If true, only evaluate on valid answers.", action="store_true")
